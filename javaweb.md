@@ -11,5 +11,5 @@
 
 ### 2 使用核心标签库（C命名空间）
 #### 2.1 使用方法
-&nbsp;&nbsp;&nbsp;&nbsp;首先需要导入jstl.jar和standard.jar两个jar包，以及c.tld文件。其次，需要在jsp文件中加入taglib指令，如下：
+&nbsp;&nbsp;&nbsp;&nbsp;首先需要导入jstl.jar和standard.jar两个jar包，以及c.tld文件。其次，需要在jsp文件中加入taglib指令，如下：  
 		` <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> `
