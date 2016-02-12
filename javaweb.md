@@ -21,7 +21,7 @@
 ##### 2.2.2 ` <c:if> ` 标签  
 用于控制是否渲染特定的内容  
 ##### 使用方法  
-`` java 
-<c:if test="${something==somethingElse}">  
+``` java 
+ <c:if test="${something==somethingElse}">  
     要执行的内容  
- </c:if> ``
+ </c:if> ```
