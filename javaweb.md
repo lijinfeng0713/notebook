@@ -67,3 +67,19 @@
     </c:otherwise>
  </c:choose>  
  ```  
+&nbsp;&nbsp;&nbsp;&nbsp; 当需要遍历的是一个装载有对象列表或者是对象数组的map时，可以采用如下方式进行遍历  
+``` java 
+	<c:forEach items="${room }" var="room">
+		<tr>
+			<td>${room.value.labRoomId }</td>
+			<td>${room.value.campus }</td>
+			<td>${room.value.building }</td>
+			<td>${room.value.roomName }</td>
+			<td>${room.value.roomType }</td>
+			<td>${room.value.capacity }</td>
+			<td>${room.value.freePeriod }</td>
+			<td><button class="btn btn-xs btn-success" data-toggle="modal" data-target="#reserveModal">预约</button>
+			</td>
+		</tr>
+	</c:forEach>  
+```  
