@@ -27,6 +27,7 @@
  </c:if>  
  ```  
 &nbsp;&nbsp;&nbsp;&nbsp;当test指定的条件为真时，该标签内嵌的内容才会被执行;该标签没有与之对应复杂的if-else逻辑 
+
 ##### 2.2.3 ` <c:choose> `、 ` <c:when> ` 、 ` <c:otherwise> `  标签
 &nbsp;&nbsp;&nbsp;&nbsp;由于<c:if>标签没有与之对应的<c:else>标签，所以较为复杂的if-else逻辑就必须由这几个标签来完成。  
 ##### 使用方法  
@@ -39,3 +40,30 @@
  </c:choose>  
  ```  
  &nbsp;&nbsp;&nbsp;&nbsp; 需要注意的是，`  <c:choose>  `标签中最多只能有一个`<c:otherwise> `标签，而且只能位于最后
+
+##### 2.2.4 ` <c:forEach> `  标签
+&nbsp;&nbsp;&nbsp;&nbsp;该标签常用于遍历某些集合或数组，非常有用。  
+##### 使用方法  
+``` java 
+ <c:forEach items="${users }" var="user">  
+    <span>用户名：${user.username }</span>
+    <span>年  龄：${user.age }</span>
+    ...
+ </c:forEach>  
+ ```  
+ &nbsp;&nbsp;&nbsp;&nbsp; 需要注意的是，这里有两个属性在执行遍历操作时非常的重要，一个是items属性，一个是var属性。其中items属性指定需要遍历的对象，相当于Java中for-each循环中第二个参数；var指定迭代变量，相当于for-each循环中第一个参数。
+  &nbsp;&nbsp;&nbsp;&nbsp;  一般在显示列表信息时，可以与` <c:choose> `标签配套使用，如下： 
+  ``` java 
+ <c:choose>  
+    <c:when test="${fn:length(users)==0}">
+       <p>数据为空</p>
+    </c:when>  
+    <c:otherwise> 
+       <c:forEach items="${users }" var="user">  
+           <span>用户名：${user.username }</span>
+           <span>年  龄：${user.age }</span>
+           ...
+       </c:forEach> 
+    </c:otherwise>
+ </c:choose>  
+ ```  
