@@ -25,4 +25,17 @@
  <c:if test="${something==somethingElse}">  
     要执行的内容  
  </c:if>  
- ```
+ ```  
+&nbsp;&nbsp;&nbsp;&nbsp;当test指定的条件为真时，该标签内嵌的内容才会被执行;该标签没有与之对应复杂的if-else逻辑 
+##### 2.2.3 ` <c:choose>、<c:when>、<c:otherwise> `  
+&nbsp;&nbsp;&nbsp;&nbsp;由于<c:if>标签没有与之对应的<c:else>标签，所以较为复杂的if-else逻辑就必须由这几个标签来完成。  
+##### 使用方法  
+``` java 
+ <c:choose>  
+    <c:when test="${something}">  if执行部分 </c:when>  
+    <c:when test="${somethingElse}">  else if执行部分 </c:when>  
+    ...
+    <c:otherwise> else 执行部分 </c:otherwise>
+ </c:choose>  
+ ```  
+ &nbsp;&nbsp;&nbsp;&nbsp; 需要注意的是，`  <c:choose>  `标签中最多只能有一个`<c:otherwise> `标签，而且只能位于最后
