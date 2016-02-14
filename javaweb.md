@@ -27,7 +27,7 @@
  </c:if>  
  ```  
 &nbsp;&nbsp;&nbsp;&nbsp;当test指定的条件为真时，该标签内嵌的内容才会被执行;该标签没有与之对应复杂的if-else逻辑 
-##### 2.2.3 ` <c:choose>、<c:when>、<c:otherwise> `  
+##### 2.2.3 ` <c:choose> `、 ` <c:when> ` 、 ` <c:otherwise> `  标签
 &nbsp;&nbsp;&nbsp;&nbsp;由于<c:if>标签没有与之对应的<c:else>标签，所以较为复杂的if-else逻辑就必须由这几个标签来完成。  
 ##### 使用方法  
 ``` java 
