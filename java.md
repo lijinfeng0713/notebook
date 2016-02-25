@@ -201,3 +201,4 @@ public class FileStreamTest {
 }
 ```  
 &nbsp;&nbsp;&nbsp;&nbsp; 由于FileOutputStream是通过字节流进行写入，所以我们很容易看到了方法二中` write() `与方法一中的区别。  
+![结果](/img/ceilAndFloor.jpg)
