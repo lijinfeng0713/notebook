@@ -85,6 +85,9 @@ public class MapTest {
 &nbsp;&nbsp;&nbsp;&nbsp;Java的IO模型设计非常优秀，它使用Decorator模式，按功能划分Stream，可以动态装配这些Stream，以便获得所需要的功能。例如，当我们需要一个具有缓冲的文件输入流，则应当组合使用FileInputStream和BufferedInputStream。  
 ##### Java IO包括  :  
 &nbsp;&nbsp;&nbsp;&nbsp;标准输入输出，文件的操作，网络上的数据流，字符串流，对象流，zip文件流等等。将数据冲外存中读取到内存中的称为输入流，将数据从内存写入外存中的称为输出流。  
+
+![缓冲输入输出流](img/io.jpg)   
+
 #### 2 标准IO  
 ##### 2.1 标准输入、输出数据流  
 &nbsp;&nbsp;&nbsp;&nbsp; java系统自带的标准数据流： ` java.lang.System `  
