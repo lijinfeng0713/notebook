@@ -201,4 +201,3 @@ public class FileStreamTest {
 }
 ```  
 &nbsp;&nbsp;&nbsp;&nbsp; 由于FileOutputStream是通过字节流进行写入，所以我们很容易看到了方法二中` write() `与方法一中的区别。  
-![CSDN图标](http://imgtech.gmw.cn/attachement/jpg/site2/20111223/f04da22d7ba7105e1d7507.jpg
