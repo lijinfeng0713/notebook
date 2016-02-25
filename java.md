@@ -201,4 +201,24 @@ public class FileStreamTest {
 }
 ```  
 &nbsp;&nbsp;&nbsp;&nbsp; 由于FileOutputStream是通过字节流进行写入，所以我们很容易看到了方法二中` write() `与方法一中的区别。  
-![结果](/img/ceilAndFloor.jpg)
+##### 2.3 缓冲输入输出流  
+&nbsp;&nbsp;&nbsp;&nbsp; 计算机访问外部设备非常耗时。访问外存的频率越高，造成CPU闲置的概率就越大。为了减少访问外存的次数，应该在一次对外设的访问中，读写更多的数据。为此，除了程序和流节点间交换数据必需的读写机制外，还应该增加缓冲机制。缓冲流就是每一个数据流分配一个缓冲区，一个缓冲区就是一个临时存储数据的内存。这样可以减少访问硬盘的次数,提高传输效率。  
+
+![缓冲输入输出流](img/buffer-stream.jpg)  
+
+##### 2.3.1 缓冲输入流` BufferedInputStream  ` 
+&nbsp;&nbsp;&nbsp;&nbsp; 当向缓冲流写入数据时候，数据先写到缓冲区，待缓冲区写满后，系统一次性将数据发送给输出设备。  
+##### 例：将文件读入内存  
+将` BufferedInputStream ` 和 ` FileInputStream ` 相接  
+```java 
+	FileInputStream in=new  FileInputStream( “file1.txt ” );
+  BufferedInputStream bin=new  BufferedInputStream( in);   
+```  
+##### 2.3.2 缓冲输出流` BufferedOutputStream  `  
+&nbsp;&nbsp;&nbsp;&nbsp; 当当从向缓冲流读取数据时候，系统先从缓冲区读出数据，待缓冲区为空时，系统再从输入设备读取数据到缓冲区。  
+##### 例：将内存写入文件  
+将` BufferedOutputStream ` 和 ` FileOutputStream ` 相接  
+```java 
+	FileOutputStreamout=new FileOutputStream(“file1.txt”);
+	BufferedOutputStream  bin=new BufferedInputStream(out);  
+```  
