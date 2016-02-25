@@ -154,4 +154,50 @@ public class StandardInputOutput {
 
 ##### 2.1.3 标准错误流 System.err  
 
-&nbsp;&nbsp;&nbsp;&nbsp;System.err输出标准错误，其数据类型为PrintStream。可查阅API获得详细说明
+&nbsp;&nbsp;&nbsp;&nbsp;System.err输出标准错误，其数据类型为PrintStream。可查阅API获得详细说明  
+
+##### 2.2 File文件流  
+##### 2.2.1 文件写入  
+&nbsp;&nbsp;&nbsp;&nbsp;我们都知道，Java IO体系中分为流式部分和非流式部分，其中流式部分又分为字节流和字符流两种。因此，文件的写入至少有两种方法
+##### 方法一：FileWriter（字符流）  
+```java  
+import java.io.*;
+
+/**
+ * Created by ljf-梁燕双栖 on 2016/2/25.
+ */
+public class FileStreamTest {
+    public static void main(String args[]) {
+        String s = "hello world";
+        try {
+            FileWriter fo = new FileWriter("D:/Log/out.txt");
+            fo.write(s);
+            fo.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+```  
+&nbsp;&nbsp;&nbsp;&nbsp; 这种方法中可以看出是将文件写入到了文本文件out.txt中，倘若该路径下没有这个文件，首先会生成这个文件，然后再写入。在执行` write() ` 方法后，最好要调用` flush() ` 方法，避免缓存问题（此问题我已经尝试过）。  
+##### 方法二：FileOutputStream（字节流）  
+```java  
+import java.io.*;
+
+/**
+ * Created by ljf-梁燕双栖 on 2016/2/25.
+ */
+public class FileStreamTest {
+    public static void main(String args[]) {
+        String s = "hello world!";
+        try {
+            FileOutputStream fo = new FileOutputStream("D:/Log/out.txt");
+            fo.write(s.getBytes());
+            fo.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+```  
+&nbsp;&nbsp;&nbsp;&nbsp; 由于FileOutputStream是通过字节流进行写入，所以我们很容易看到了方法二中` write() `与方法一中的区别。
