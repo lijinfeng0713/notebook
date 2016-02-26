@@ -12,4 +12,69 @@
 ###### 散列冲突（hash collision） 
 &nbsp;&nbsp;&nbsp;&nbsp;将元素直接插入桶中时，有时会遇见桶被占满的情况，这种现象被称为散列冲突。当遇到这种情况时就要将新元素与桶中的元素进行比较，看这个对象是否已存在。如果散列码是合理且随机分布的，桶的数目也足够大，需要比较的次数就会少。  
 ###### 再散列（rehashed）  
-&nbsp;&nbsp;&nbsp;&nbsp; 如果散列表太满，就需要再散列，即创建一个桶数更多的表，而装填因子决定了何时对散列表进行再散列。
+&nbsp;&nbsp;&nbsp;&nbsp; 如果散列表太满，就需要再散列，即创建一个桶数更多的表，而装填因子决定了何时对散列表进行再散列。  
+##### 2 Hashtable的遍历方式  
+##### 2.1 遍历Hashtable的键值对  
+###### 第一步：根据entrySet()获取Hashtable的“键值对”的Set集合。  
+###### 第二步：通过Iterator迭代器遍历“第一步”得到的集合。  
+```java  
+// 假设table是Hashtable对象
+// table中的key是String类型，value是Integer类型
+Integer integ = null;
+Iterator iter = table.entrySet().iterator();
+while(iter.hasNext()) {
+    Map.Entry entry = (Map.Entry)iter.next();
+    // 获取key
+    key = (String)entry.getKey();
+        // 获取value
+    integ = (Integer)entry.getValue();
+}  
+```  
+##### 2.2 通过Iterator遍历Hashtable的键  
+###### 第一步：根据keySet()获取Hashtable的“键”的Set集合。  
+###### 第二步：通过Iterator迭代器遍历“第一步”得到的集合。  
+```java  
+// 假设table是Hashtable对象
+// table中的key是String类型，value是Integer类型
+String key = null;
+Integer integ = null;
+Iterator iter = table.keySet().iterator();
+while (iter.hasNext()) {
+        // 获取key
+    key = (String)iter.next();
+        // 根据key，获取value
+    integ = (Integer)table.get(key);
+}  
+```  
+##### 2.3 通过Iterator遍历Hashtable的值  
+###### 第一步：根据value()获取Hashtable的“值”的集合。
+###### 第二步：通过Iterator迭代器遍历“第一步”得到的集合。  
+```java  
+// 假设table是Hashtable对象
+// table中的key是String类型，value是Integer类型
+Integer value = null;
+Collection c = table.values();
+Iterator iter= c.iterator();
+while (iter.hasNext()) {
+    value = (Integer)iter.next();
+}  
+```  
+##### 2.4 通过Enumeration遍历Hashtable的键  
+###### 第一步：根据keys()获取Hashtable的集合。  
+###### 第二步：通过Enumeration遍历“第一步”得到的集合。  
+```java  
+Enumeration enu = table.keys();
+while(enu.hasMoreElements()) {
+    System.out.println(enu.nextElement());
+}    
+```  
+##### 2.5 通过Enumeration遍历Hashtable的值  
+###### 第一步：根据elements()获取Hashtable的集合。  
+###### 第二步：通过Enumeration遍历“第一步”得到的集合。  
+```java  
+Enumeration enu = table.elements();
+while(enu.hasMoreElements()) {
+    System.out.println(enu.nextElement());
+}  
+```  
+
