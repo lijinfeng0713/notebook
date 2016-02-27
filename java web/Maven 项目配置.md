@@ -11,4 +11,12 @@
 ###### path = ;%MAVEN_HOME%\bin   
 &nbsp;&nbsp;&nbsp;&nbsp; 安装完后需要检查是否安装成功。打开cmd，运行 ` mvn -v ` 命令，若显示Maven版本信息则表明成功，否则，安装失败。如下图所示：  
 
-![](img/2016022701.jpg)  
+![](img/2016022701.jpg)   
+
+##### 1.3 修改Maven本地仓库位置  
+&nbsp;&nbsp;&nbsp;&nbsp; 如果不修改本地仓库位置，Maven将默认把依赖文件存放在c盘用户目录m2文件夹下。所以我们需要修在配置文件来避免这个问题。即修改config目录下的` settings.xml ` 。  
+```java  
+<localRepository>D:/maven/repository</localRepository>  
+```  
+#### 2 Maven 管理javaweb项目  
+&nbsp;&nbsp;&nbsp;&nbsp; 以IDEA 14为例讲解如何配置Maven管理javaweb项目。 首先，新建一个项目 ` File->New->Project ` ，选择新建一个SpringMVC的项目。如下图  
