@@ -27,7 +27,11 @@
 
 ![](img/2016022704.jpg)   
 
-到这一步已经建立了一个Maven管理的初具结构的SpringMVC项目。接下来需要修改项目所需要使用的Maven的本地仓库（IDEA的一个缺项吧，每次新建都要修改）。步骤` File-> Settings -> Maven ` 修改右下角的Maven的Settings配置文件的路径和仓库路径（都是之前建立好的）。如下图：  
+&nbsp;&nbsp;&nbsp;&nbsp; 到这一步已经建立了一个Maven管理的初具结构的SpringMVC项目。接下来需要修改项目所需要使用的Maven的本地仓库（IDEA的一个缺项吧，每次新建都要修改）。步骤` File-> Settings -> Maven ` 修改右下角的Maven的Settings配置文件的路径和仓库路径（都是之前建立好的）。如下图：  
 
-![](img/2016022705.jpg)   
+![](img/2016022715.jpg)   
+
+&nbsp;&nbsp;&nbsp;&nbsp; 至此，已经完成了整个项目的配置，生成的项目结构如下：  
+
+![](img/2016022706.jpg)
 
