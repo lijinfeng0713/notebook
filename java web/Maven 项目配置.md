@@ -20,3 +20,11 @@
 ```  
 #### 2 Maven 管理javaweb项目  
 &nbsp;&nbsp;&nbsp;&nbsp; 以IDEA 14为例讲解如何配置Maven管理javaweb项目。 首先，新建一个项目 ` File->New->Project ` ，选择新建一个SpringMVC的项目。如下图  
+
+![](img/2016022702.jpg)   
+
+![](img/2016022703.jpg)   
+
+![](img/2016022704.jpg)   
+
+
