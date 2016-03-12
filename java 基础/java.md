@@ -1,6 +1,6 @@
 ﻿# Java 学习笔记
 
-### 遍历map的三种方法
+### 遍历map的四种方法
 
 ##### 方法一：利用foreach遍历key，再通过get方法根据key来获取value
 
@@ -72,6 +72,28 @@ public class MapTest {
 			for (Map.Entry<String, String> entry : map.entrySet()) {
 				   System.out.println("name： " + entry.getKey() + "； age is " + entry.getValue());
 				  }
+		}
+	}
+}
+```    
+
+##### 方法四：利用Lambda表达式
+
+```java 
+public class MapTest {
+	
+	public static void main(String[] args) {
+		
+		Map<String,String> map = new HashMap<String,String>();
+		
+		map.put("xiaoming", "22");
+		map.put("xiaohua", "24");
+		
+		if(map.isEmpty()) {
+			System.out.println("This map is empty！");
+		} else {
+			Iterator it = map.entrySet().iterator();
+			it.forEachRemaining(obj -> System.out.println(obj));
 		}
 	}
 }
