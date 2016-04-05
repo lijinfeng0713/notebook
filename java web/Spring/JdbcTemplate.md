@@ -18,21 +18,21 @@ jdbc.password = 123456
 * 配置jdbcTemplate的bean  
 
 ```
- <!-- 导入资源文件 -->
- <context:property-placeholder location="classpath:config/db.properties"/>
+	<!-- 导入资源文件 -->
+	<context:property-placeholder location="classpath:config/db.properties"/>
      
- <!-- 配置dbcp数据源 -->
+	<!-- 配置dbcp数据源 -->
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="${jdbc.driverClassName}" />
-	  <property name="url" value="${jdbc.url}" />
-	  <property name="username" value="${jdbc.username}" />
-	  <property name="password" value="${jdbc.password}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
 		<property name="initialSize" value="1" />
 	</bean>
 	 
 	<!-- 配置jdbcTemplate -->
 	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
-	 	<property name="dataSource" ref="dataSource"></property>	
+		<property name="dataSource" ref="dataSource"></property>	
 	</bean>
 ```  
 
@@ -105,18 +105,23 @@ public class TestJdbcTemplate {
 ##### JdbcTemplate支持的回调类  
 ###### （1）预编译语句及存储过程创建回调  
 用于根据JdbcTemplate提供的连接创建相应的语句；  
-###### ` PreparedStatementCreator `  通过回调获取JdbcTemplate提供的Connection，由用户使用该Conncetion创建相关的PreparedStatement；  
-###### ` CallableStatementCreator `  通过回调获取JdbcTemplate提供的Connection，由用户使用该Conncetion创建相关的CallableStatement；  
+###### ` PreparedStatementCreator `   
+通过回调获取JdbcTemplate提供的Connection，由用户使用该Conncetion创建相关的PreparedStatement；  
+###### ` CallableStatementCreator `    
+通过回调获取JdbcTemplate提供的Connection，由用户使用该Conncetion创建相关的CallableStatement；  
 ###### (2) 预编译语句设值回调  
 用于给预编译语句相应参数设值    
-###### ` PreparedStatementSetter `  通过回调获取JdbcTemplate提供的PreparedStatement，由用户来对相应的预编译语句相应参数设值；  
+###### ` PreparedStatementSetter `   
+通过回调获取JdbcTemplate提供的PreparedStatement，由用户来对相应的预编译语句相应参数设值；  
 ###### ` BatchPreparedStatementSetter `  
 类似于PreparedStatementSetter，但用于批处理，需要指定批处理大小；    
 ###### (3) 自定义功能回调   
 提供给用户一个扩展点，用户可以在指定类型的扩展点执行任何数量需要的操作  
-###### ` ConnectionCallback `  通过回调获取JdbcTemplate提供的Connection，用户可在该Connection执行任何数量的操作；  
-###### ` StatementCallback `  通过回调获取JdbcTemplate提供的Statement，用户可以在该Statement执行任何数量的操作；  
-###### ` PreparedStatementCallback `  通过回调获取JdbcTemplate提供的PreparedStatement，用户可以在该PreparedStatement执行任何数量的操作；  
+###### ` ConnectionCallback `   
+通过回调获取JdbcTemplate提供的Connection，用户可在该Connection执行任何数量的操作；  
+###### ` StatementCallback `    
+通过回调获取JdbcTemplate提供的Statement，用户可以在该Statement执行任何数量的操作；  
+###### ` PreparedStatementCallback `    通过回调获取JdbcTemplate提供的PreparedStatement，用户可以在该PreparedStatement执行任何数量的操作；  
 ###### ` CallableStatementCallback `  通过回调获取JdbcTemplate提供的CallableStatement，用户可以在该CallableStatement执行任何数量的操作；   
 ###### (4) 结果集处理回调  
 通过回调处理ResultSet或将ResultSet转换为需要的形式   
