@@ -7,7 +7,8 @@
 * 原子性  
 * 一致性  
 * 隔离性  
-* 持久性  
+* 持久性    
+
 #### 2 声明事务  
 ##### 2.1 基于注解的形式  
 ① 配置一个事务管理器  
@@ -18,7 +19,7 @@
 ##### Spring支持的七种事务传播行为  
 ###### ① ` REQUIRED `  
 使用调用方法的事务  
-![](java web/img/2016040601.jpg)      
+![](https://github.com/ljfGitHub/notebook/blob/master/java web/img/2016040601.jpg)      
 当执行过程中出现异常时，事务回滚到开始处，中间的所有方法都不会执行。
 ###### ② ` REQUIRED_NEW `  
 表示该方法必须启动一个新的事务，并在自己的事务中进行，如果有事务在运行，就应该将这个事务挂起。  
@@ -26,7 +27,7 @@
 	@Transactional(propagation = Propagation.REQUIRED_NEW)
 	public void purchase() {...}
 ```  
-![](java web/img/2016040601.jpg)    
+![](https://github.com/ljfGitHub/notebook/blob/master/java web/img/2016040601.jpg)    
 如果在各自的事务中出现了异常，只回滚到自己事务的开始，不影响其他事务的执行  
 ###### ③ ` SUPPORTS `  
 如果事务在运行，当前方法就在这个事务内运行，否则它可以不运行在事务中。  
