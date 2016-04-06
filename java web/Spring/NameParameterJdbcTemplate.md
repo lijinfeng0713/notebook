@@ -95,8 +95,8 @@ public class User {
 		return id + username + password + email;
 	}
 }
-
-###### 注意：  
+```  
+###### 注意： 
 使用这种方法时，括号中的参数名必须跟JavaBean中的属性名保持严格一致，不然就会出错。  
 
 
