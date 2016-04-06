@@ -121,8 +121,10 @@ public class TestJdbcTemplate {
 通过回调获取JdbcTemplate提供的Connection，用户可在该Connection执行任何数量的操作；  
 ###### ` StatementCallback `    
 通过回调获取JdbcTemplate提供的Statement，用户可以在该Statement执行任何数量的操作；  
-###### ` PreparedStatementCallback `    通过回调获取JdbcTemplate提供的PreparedStatement，用户可以在该PreparedStatement执行任何数量的操作；  
-###### ` CallableStatementCallback `  通过回调获取JdbcTemplate提供的CallableStatement，用户可以在该CallableStatement执行任何数量的操作；   
+###### ` PreparedStatementCallback ` 
+通过回调获取JdbcTemplate提供的PreparedStatement，用户可以在该PreparedStatement执行任何数量的操作；  
+###### ` CallableStatementCallback `  
+通过回调获取JdbcTemplate提供的CallableStatement，用户可以在该CallableStatement执行任何数量的操作；   
 ###### (4) 结果集处理回调  
 通过回调处理ResultSet或将ResultSet转换为需要的形式   
 ###### ` RowMapper `  
