@@ -13,7 +13,52 @@
 ##### 2.1 基于注解的形式  
 ① 配置一个事务管理器  
 ② 启用事务注解  
-③ 在对应的方法上添加@Transactional注解  
+③ 在对应的方法上添加@Transactional注解     
+##### 2.2 基于配置的形式配置事务  
+###### 步骤：  
+① 配置事务管理器（transactionManager）  
+② 配置事务属性   <tx:advice>
+③ 配置事务切入点，以及把事务切入点和事务属性关联起来    
+```java  
+  <!-- 配置事务管理器-->
+  <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+      <property name="sessionFactory" ref="sessionFactory" />
+  </bean>
+    
+  <!-- 配置事务属性 -->
+  <tx:advice id="transactionAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+	    <tx:method name="save*" propagation="REQUIRED" />
+	    <tx:method name="add*" propagation="REQUIRED" />
+	    <tx:method name="create*" propagation="REQUIRED" />
+	    <tx:method name="insert*" propagation="REQUIRED" />
+	    <tx:method name="update*" propagation="REQUIRED" />
+	    <tx:method name="del*" propagation="REQUIRED" />
+	    <tx:method name="remove*" propagation="REQUIRED" />
+	    <tx:method name="put*" propagation="REQUIRED" />
+	    <tx:method name="use*" propagation="REQUIRED"/>
+	    <tx:method name="batchSave*" propagation="REQUIRED" />
+	    <tx:method name="batchUpdate*" propagation="REQUIRED" />
+	    <tx:method name="batchDelete*" propagation="REQUIRED" />
+	    
+	    <!--hibernate4必须配置为开启事务 否则 getCurrentSession()获取不到-->
+	    <tx:method name="get*" propagation="REQUIRED" />
+	    <tx:method name="query*" propagation="REQUIRED" />
+	    <tx:method name="count*" propagation="REQUIRED" read-only="true" />
+	    <tx:method name="find*" propagation="REQUIRED" read-only="true" />
+	    <tx:method name="list*" propagation="REQUIRED" read-only="true" />
+	    <tx:method name="*" read-only="true" />
+		</tx:attributes>
+	</tx:advice>
+	
+	<!-- 配置事务切入点以及把事务切入点和事务属性关联起来-->
+	<aop:config expose-proxy="true">
+    <!-- 只对业务逻辑层实施事务 -->
+    <aop:pointcut id="transactionPointcut" expression="execution(* com.web.service.impl..*.*(..))" />
+    <aop:advisor advice-ref="transactionAdvice" pointcut-ref="transactionPointcut" />
+  </aop:config>  
+```  
+
 #### 3 事务的传播行为  
 在注解中使用propagation指定事务的传播行为，即指定当当前事务方法被另外一个方法调用时如何使用事务。  
 ##### Spring支持的七种事务传播行为  
