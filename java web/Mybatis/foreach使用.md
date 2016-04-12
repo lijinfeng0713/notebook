@@ -7,7 +7,8 @@ foreach是Mybatis中一个强大的动态SQL语句构造标签，他可以遍历
 * ` collection `: 如果传入的参数类型是List，collection的值是list；如果传入的参数类型是数组，collection的值是array；如果传入的参数类型是map，collection的值是map的key    
 * ` open `: 表示该语句以什么开始    
 * ` separator `: 表示在每次进行迭代之间以什么符号作为分隔符   
-* ` close `: 表示以什么结束     
+* ` close `: 表示以什么结束       
+ 
 ##### 一、传入List  
 ```java  
 <insert id="batchAdd" parameterType="List" useGeneratedKeys="true" keyProperty="id">
