@@ -48,5 +48,66 @@ public String add() {•••}
 @RequestMapping(value="/add", method = RequestMethod.GET,
                header={"X-Client","content-type=text/*"})
 public String add() {•••}
+```     
+
+##### 二、@PathVariable   
+将请求URL中的模板变量的值映射到功能处理方法的参数上。   
+```java  
+@RequestMapping(value = "/user/{userId}", method = RequestMethod.POST)   
+public void delete(@PathVariable(value = "userId") Integer userId) {
+	//operation
+}  
 ```  
-	
+###### 请求URL：` http://localhost:8080/user/123 `  
+
+
+##### 三、@RequestParam   
+该注解可以用来获取请求参数   
+###### 方式一：  
+###### 前端请求     
+```java  
+<a href="/test/user?username=hh&address=123">testParam</a>  
+```   
+###### 后台Controller   
+```java   
+@Controller
+@RequestMapping("/test")
+public class TestController {
+
+    @RequestMapping(value = "/user", method = RequestMethod.GET)
+    public void testParam (@RequestParam("username") String username,
+                           @RequestParam("address") String address) {
+        System.out.println("username:"+username+";address:"+address);
+
+    }
+}
+```   
+###### 前端请求   
+```html  
+<form action="/test/user" method="post" accept-charset="UTF-8">
+	用户名：<input type="text" name="username"/><br>
+	地址：<input type="text" name="address"/> <br>
+	<button type="submit">提交</button>
+</form>  
+```  
+###### 后台Controller  
+```java  
+@Controller
+@RequestMapping("/test")
+public class TestController {
+
+    @RequestMapping(value = "/user", method = RequestMethod.POST)
+    public void testParam (@RequestParam("username") String username,
+                           @RequestParam("address") String address) {
+        System.out.println("username:"+username+";address:"+address);
+
+    }
+}  
+```  
+###### @RequestParam常用参数   
+* value ： 请求参数的名字，如 ` @RequestParam(value = "username") `    
+* required : 标注请求参数是否为必须，默认是true    
+* defaultValue ：默认值，表示如果请求中没有同名参数时的默认值   
+###### 注意：建议用包装类型代替原子类型，当允许参数为空时使用包装类型可以减少出错情况   
+
+
