@@ -110,6 +110,7 @@ public class TestController {
 * value ： 请求参数的名字，如 ` @RequestParam(value = "username") `  
 * required : 标注请求参数是否为必须，默认是true    
 * defaultValue ：默认值，表示如果请求中没有同名参数时的默认值   
+
 ###### 注意：建议用包装类型代替原子类型，当允许参数为空时使用包装类型可以减少出错情况   
 
 ##### 四、@RequestBody   
