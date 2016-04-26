@@ -83,7 +83,8 @@ public class TestController {
 
     }
 }
-```   
+```    
+###### 方式二：   
 ###### 前端请求   
 ```html  
 <form action="/test/user" method="post" accept-charset="UTF-8">
