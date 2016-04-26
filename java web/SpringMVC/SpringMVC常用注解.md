@@ -16,7 +16,8 @@ public String login() {
 
 ###### (2) consumes, produces  
 * consumes ：指定处理请求的提交内容类型（Content-Type），例如application/json, text/html;  
-* produces : 指定返回的内容类型，仅当request请求头中的(Accept)类型中包含该指定类型才返回  
+* produces : 指定返回的内容类型，仅当request请求头中的(Accept)类型中包含该指定类型才返回     
+
 ###### POST请求   
 ```java  
 @RequestMapping(value="/login", method = RequestMethod.POST,
@@ -36,7 +37,8 @@ public String add() {
 
 ###### （3） params, headers  
 * params ： 指定request中必须包含某些参数值是，才让该方法处理。  
-* headers ： 指定request中必须包含某些指定的header值，才能让该方法处理请求。  
+* headers ： 指定request中必须包含某些指定的header值，才能让该方法处理请求。    
+
 ###### 请求参数限制  
 ```java  
 @RequestMapping（value="/add", method = RequestMethod.POST,
@@ -107,7 +109,8 @@ public class TestController {
 ###### @RequestParam常用参数   
 * value ： 请求参数的名字，如 ` @RequestParam(value = "username") `    
 * required : 标注请求参数是否为必须，默认是true    
-* defaultValue ：默认值，表示如果请求中没有同名参数时的默认值   
+* defaultValue ：默认值，表示如果请求中没有同名参数时的默认值     
+
 ###### 注意：建议用包装类型代替原子类型，当允许参数为空时使用包装类型可以减少出错情况   
 
 
