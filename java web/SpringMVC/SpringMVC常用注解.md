@@ -16,8 +16,7 @@ public String login() {
 
 ###### (2) consumes, produces  
 * consumes ：指定处理请求的提交内容类型（Content-Type），例如application/json, text/html;  
-* produces : 指定返回的内容类型，仅当request请求头中的(Accept)类型中包含该指定类型才返回     
-
+* produces : 指定返回的内容类型，仅当request请求头中的(Accept)类型中包含该指定类型才返回  
 ###### POST请求   
 ```java  
 @RequestMapping(value="/login", method = RequestMethod.POST,
@@ -37,8 +36,7 @@ public String add() {
 
 ###### （3） params, headers  
 * params ： 指定request中必须包含某些参数值是，才让该方法处理。  
-* headers ： 指定request中必须包含某些指定的header值，才能让该方法处理请求。    
-
+* headers ： 指定request中必须包含某些指定的header值，才能让该方法处理请求。  
 ###### 请求参数限制  
 ```java  
 @RequestMapping（value="/add", method = RequestMethod.POST,
@@ -83,8 +81,7 @@ public class TestController {
 
     }
 }
-```    
-###### 方式二：   
+```   
 ###### 前端请求   
 ```html  
 <form action="/test/user" method="post" accept-charset="UTF-8">
@@ -108,10 +105,92 @@ public class TestController {
 }  
 ```  
 ###### @RequestParam常用参数   
-* value ： 请求参数的名字，如 ` @RequestParam(value = "username") `    
+* value ： 请求参数的名字，如 ` @RequestParam(value = "username") `  
 * required : 标注请求参数是否为必须，默认是true    
-* defaultValue ：默认值，表示如果请求中没有同名参数时的默认值     
-
+* defaultValue ：默认值，表示如果请求中没有同名参数时的默认值   
 ###### 注意：建议用包装类型代替原子类型，当允许参数为空时使用包装类型可以减少出错情况   
+
+##### 四、@RequestBody   
+ 将HTTP请求正文转换为适合的HttpMessageConverter对象。   
+ 使用@RequestBody和@ResponseBody时一定需要注意，因为一不小心就会出现415错误，即请求实体无法正确映射，具体内容参考上一节。    
+在处理请求参数时，使用@RequestBody比使用@RequestParam更具有优势，更加灵活。尤其是在传多个参数而且与实体相对应时，使用@RequestBody更加方便。  
+###### 前端JS   
+```java  
+ var data = {
+     username : username,
+     password : password
+ };
+
+ data = JSON.stringify(data);
+
+ $.ajax({
+     type: "POST",
+     contentType: "application/json",
+     dataType: "json",
+     url: "/test/user",
+     data: data,
+     success: function (data) {
+         alert("成功");
+     },
+     error: function (data) {
+         alert("失败");
+     }
+ });
+```   
+###### 后台Controller接受   
+```java  
+@Controller
+@RequestMapping("/test")
+public class TestController {
+    
+    @RequestMapping(value = "/user", method = RequestMethod.POST)
+    public void addUser (@RequestBody User user) {
+        System.out.println(user);
+    }
+}
+```  
+##### 五、@ResponseBody   
+将内容或对象作为 HTTP 响应正文返回，并调用适合HttpMessageConverter的Adapter转换对象，写入输出流。     
+###### 前端JS  
+```java  
+var data = {
+    username : username,
+    password : password
+};
+
+data = JSON.stringify(data);
+
+$.ajax({
+    type: "POST",
+    contentType: "application/json",
+    dataType: "json",
+    url: "/test/user",
+    data: data,
+    success: function (data) {
+        alert("succeed");
+    },
+    error: function (data) {
+        alert("failed");
+    }
+});
+```   
+###### 后台Controller  
+```java  
+@Controller
+@RequestMapping("/test")
+public class TestController {
+
+    @RequestMapping(value = "/user", method = RequestMethod.POST)
+    public @ResponseBody String addUser (@RequestBody User user) {
+
+        if (null != user) {
+            return "{\"SUCCESS\":true}";
+        } else {
+            return "{\"SUCCESS\":false}";
+        }
+    }
+}
+```  
+
 
 
