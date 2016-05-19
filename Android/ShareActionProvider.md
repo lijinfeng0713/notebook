@@ -89,5 +89,5 @@ public class MainActivity extends AppCompatActivity {
     }
 }
 ```    
-稍微的看一眼就能知道区别所在，即在menu.xml文件中，命名空间有细微的区别，在Java代码中获取ActionProvider的方式有所不同。
+稍微的看一眼就能知道区别所在，即在menu.xml文件中，命名空间有细微的区别，actionProviderClass不同，在Java代码中获取ActionProvider的方式有所不同。
 
