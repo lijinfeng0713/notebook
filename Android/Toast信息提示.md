@@ -51,5 +51,33 @@ toast.setGravity(Gravity.CENTER, 0, 0);
 toast.setDuration(Toast.LENGTH_LONG);
 toast.setView(view);
 toast.show();
+```      
+###### 布局文件toast.xml    
+```html  
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="110dp"
+    android:layout_width="150dp"
+    android:orientation="vertical"
+    android:background="@drawable/toast_background">
+
+    <TextView
+        android:layout_width="150dp"
+        android:layout_height="20dp"
+        android:id="@+id/toast_title"
+        android:text=""/>
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginLeft="40dp"
+        android:background="@drawable/ic_launcher" />
+    <TextView
+        android:id="@+id/toast_content"
+        android:layout_width="150dp"
+        android:layout_height="20dp"
+        android:text=""/>
+</LinearLayout>
 ```   
+
 ![](img/2016052304.jpg)
