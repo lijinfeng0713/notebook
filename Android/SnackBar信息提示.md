@@ -7,8 +7,7 @@
 #### 1、使用SnackBar    
 需要注意的是，在Android5.0以下的版本中使用SnackBar时，需要在gradle文件的依赖中添加` compile 'com.android.support:design:23.3.0' `   
 一个SnackBar需要附加到视图上。如果它是连接到来自视图类的任何对象，如任何常用的布局对象，那么snackbar只能提供基本功能。然而，如果snackbar是连接到一个coordinatorlayout的snackbar，则可以获得额外的功能。<a href="https://developer.android.com/training/snackbar/showing.html" title="">参考文档</a>    
-官方提供的显示效果     
-![](https://developer.android.com/images/training/snackbar/snackbar_button_move.mp4)   
+官方提供的显示效果     <a href="https://developer.android.com/images/training/snackbar/snackbar_button_move.mp4" title="">官方效果</a>    
 
 ###### 使用了CoordinatorLayout的布局文件    
 ```html   
